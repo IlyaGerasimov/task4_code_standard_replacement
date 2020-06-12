@@ -56,10 +56,8 @@ def decode(f, y_e):
         pos_e = [info["standard_replacement"][calc.bool_str(syndrome_y)]]
     res = calc.xor_tuple([calc.str_bool(pos_e[0]), y_e_bool], n)
     print("Decode result is: ", calc.bool_str(res))
-    if d_flag:
-        print("The error probability:", pr)
-    else:
-        print("The decode process is determined. The error is {} with weight {}".format(calc.bool_str(pos_e), calc.wt(pos_e)))
+    # Since it is possible we use syndrome table for error with error of weight > t
+    print("The error probability:", pr)
     return res[0:(n - r)], pr
 
 #decode(open("./codes/decode12", "r"), "110010001011")
